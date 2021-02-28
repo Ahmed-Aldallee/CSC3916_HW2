@@ -92,7 +92,20 @@ router.route('/testcollection')
         var o = getJSONObjectForMovieRequirement(req);
         res.json(o);
     }
-    );
+    )
+    .get(function (req, res) {
+        res.json({status: 200, msg: "Get movies", headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY});
+    }
+    )
+    .post(function (req, res) {
+        res.json({status: 200, msg: "movie saved", headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY});
+    });
+
+router.all('*', function(req, res) {
+    res.json({
+        error: 'Error. To lazy to make it supported '
+    });
+});
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
