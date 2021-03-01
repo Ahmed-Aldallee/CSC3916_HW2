@@ -103,7 +103,7 @@ router.route('/testcollection')
 
 router.all('*', function(req, res) {
     res.json({
-        error: 'Error. To lazy to make it supported '
+        error: 'Error. Not supported'
     });
 });
 
